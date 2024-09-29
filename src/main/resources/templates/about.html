@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{baseFragment :: parent(~{::#content},~{::title}, ~{script})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
 </head>
 <body>
-    <h1>This is about page</h1>
-    <div class="host-tag" th:replace = "~{baseFragment :: parent}">
-        <h1>This is div tag of the fragment</h1>
-    </div>
-
-    <div class="parament-tag" th:insert = "~{baseFragment::parentParameter('One','two')}"></div>
-
-    <div class="tag" th:replace = "~{baseFragment :: contentFragment(~{::p})}">
-        <p>this is conen  t passed</p>
-    </div>
+    <section id="content">
+        <h1>
+            This is about page
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et, impedit?
+        </h1>
+        <script>
+            console.log("this is about page")
+        </script>
+    </section>
 </body>
 </html>

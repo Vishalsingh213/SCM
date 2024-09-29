@@ -33,4 +33,21 @@ public class PageController {
     {
         return "services";
     }
+
+    @RequestMapping("/login")
+    public String login()
+    {
+        return new String("login");
+    }
+
+    @RequestMapping("/register")
+    public String signup()
+    {
+        return new String("register");
+    }
+    @RequestMapping("/contact")
+    public String contact()
+    {
+        return new String("contact");
+    }
 }
