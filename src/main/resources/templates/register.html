@@ -1,23 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{baseFragment :: parent(~{::#content},~{::title}, ~{script})}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html
+  lang="en"
+  th:replace="~{baseFragment :: parent(~{::#content},~{::title}, ~{script})}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
- 
-    
-</head>
-<body>
-    <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-4 text-xl-2" id="content">
-        <h1>
-            This is register page
-        </h1>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="content">
+      <div class="grid grid-cols-4">
+        <div class="col-span-4 md:col-span-2 lg:col-span-4"></div>
+        <div class="col-span-4 md:col-span-8 lg:col-span-4">
+          <div
+            href="#"
+            class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          >
+            <h5
+              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              SignUp Here
+            </h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">
+              start managing your contacts on cloud
+            </p>
+            <form 
+              data-th-action="@{'/do-register'}" 
+              method="post"
+              data-th-object="${userForm}" 
+              class="mt-5">
+              <!-- For Name -->
+              <div class="mb-3">
+                <label
+                  for="name"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  data-th-field="*{name}"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter Name Here"
+                  required
+                />
+              </div>
+
+              <!-- for Email -->
+              <div class="mb-3">
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  id="email"
+                  data-th-field="*{email}"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Johnson@gmail.com"
+                  required
+                />
+              </div>
+              <!-- for Password -->
+              <div class="mb-3">
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  data-th-field="*{password}"
+                  id="password"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="ex. Tony@123"
+                  required
+                />
+              </div>
+              <!-- for Phone -->
+              <div class="mb-3">
+                <label
+                  for="phone"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Contact number</label
+                >
+                <input
+                  type="phone"
+                  id="phone"
+                  data-th-field="*{phoneNumber}"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="+91234567890"
+                  required
+                />
+              </div>
+              <!-- for About -->
+              <div class="mb-3">
+                <label
+                  for="about"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >About</label
+                >
+                <textarea
+                  id="about"
+                  rows="4"
+                  data-th-field="*{about}"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Write your thoughts here..."
+                ></textarea>
+              </div>
+
+              <!-- Buttons -->
+               <div class="mb-3 flex justify-center space-x-3">
+                <div class="mb-3 flex justify-center space-x-3">
+                    <button type="submit" class="px-3 py-2 rounded bg-gray-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800 hover:bg-gray-900">Sign Up</button>
+                    <button type="reset" class="px-3 py-2 rounded bg-gray-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800 hover:bg-gray-900">Reset</button>
+               </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  </body>
 </html>
