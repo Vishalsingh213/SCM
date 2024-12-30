@@ -80,7 +80,7 @@ public class PageController {
         return "register";
     }
     
-// processing register
+// processing regis
 
     @RequestMapping(value = "/do-register", method=RequestMethod.POST)
     public String processRegister(@Valid @ModelAttribute UserForm userForm ,BindingResult rBindingResult, HttpSession session) {   
