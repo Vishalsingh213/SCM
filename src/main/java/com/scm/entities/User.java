@@ -8,6 +8,7 @@ import org.aspectj.apache.bcel.classfile.Module.Provide;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -49,9 +50,9 @@ public class User {
     private boolean phoneVerifies = false;
 
     // How does user logged in 
-    @Enumerated
+    @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
-    private String providerUserId;
+    private String providerUserId; 
 
     // Add more fields if needed
 
