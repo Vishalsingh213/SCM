@@ -32,6 +32,12 @@ public class PageController {
     private UserService userService;
 
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
+    
+
     @RequestMapping(value = "/home")        // Annotation is used to map the web request with specific method or class.If multiple @RequestMapping annotations are detected on the same element, a warning will be logged, and only the first mapping will be used. This also applies to composed @RequestMapping annotations such as @GetMapping, @PostMapping, etc.When applied to a class, it defines a base URL for all the handler methods in that class. This is useful for grouping related requests.
     public String home(Model model)
     {
