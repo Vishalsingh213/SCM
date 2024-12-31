@@ -6,9 +6,11 @@ import java.util.UUID;
 import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.scm.entities.User;
+import com.scm.helpers.AppConstants;
 import com.scm.helpers.ResourceNotFoundException;
 import com.scm.repositories.UserRepository;
 import com.scm.services.UserService;
@@ -19,18 +21,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     // private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // logger.info(user.getProvider().toString());
+
+        // Set the role;
+user.setRoleList(List.of(AppConstants.ROLE_USER));;
+
         return userRepo.save(user);
     }
 
     @Override
     public Optional<User> getUserById(String id) {
-        
+
         return userRepo.findById(id);
     }
 
@@ -43,9 +54,9 @@ public class UserServiceImpl implements UserService {
         user2.setAbout(user.getAbout());
         user2.setPhoneNumber(user.getPhoneNumber());
         user2.setProfilePic(user.getProfilePic());
-        user2.setEnable(user.isEnable());
+        user2.setEnabled(user.isEnabled());
         user2.setEmailVerified(user.isEmailVerified());
-        user2.setPhoneVerifies(user.isPhoneVerifies());
+        user2.setPhoneVerified(user.isPhoneVerified());
         user.setProvider(user.getProvider());
         user2.setProviderUserId(user.getProviderUserId());
 
