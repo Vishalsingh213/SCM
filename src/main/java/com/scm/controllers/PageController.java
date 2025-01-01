@@ -62,7 +62,7 @@ public class PageController {
         return "services";
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login()
     {
         return new String("login");
@@ -73,7 +73,7 @@ public class PageController {
     {
         return new String("register");
     }
-    @RequestMapping("/contact")
+    @GetMapping("/contact")
     public String contact()
     {
         return new String("contact");
